@@ -157,6 +157,7 @@ namespace Spreetail.Demo.Repository
                 if (!_dictionary.TryGetValue(key, out var members)) return new Response(ErrorConstants.KeyDoesNotExist);
                 if (!members.Any(m => m.Equals(member))) return new Response(ErrorConstants.MemberDoesNotExist);
                 members.Remove(member);
+                if (!members.Any()) _dictionary.Remove(key);
                 return Ok;
             }
             finally
