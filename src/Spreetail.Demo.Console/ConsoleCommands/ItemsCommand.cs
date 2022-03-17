@@ -9,7 +9,7 @@ namespace Spreetail.Demo.ConsoleCommands
     {
         private IMultiValueDictionaryRepository<string, string> _repository;
 
-        public ItemsCommand(IMultiValueDictionaryRepository<string, string> repository)
+        public ItemsCommand(IMultiValueDictionaryRepository<string, string> repository, IUsageService usageService) : base(usageService)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }

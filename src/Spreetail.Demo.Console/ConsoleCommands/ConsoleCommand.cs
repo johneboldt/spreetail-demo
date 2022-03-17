@@ -7,6 +7,12 @@ namespace Spreetail.Demo.ConsoleCommands
 {
     public abstract class ConsoleCommand : IConsoleCommand
     {
+        private IUsageService _usageService;
+        protected ConsoleCommand(IUsageService usageService)
+        {
+            _usageService = usageService ?? throw new ArgumentNullException(nameof(usageService));
+        }
+
         public abstract string SupportedCommand { get; }
 
         public async Task ExecuteAsync(string command)
@@ -25,7 +31,7 @@ namespace Spreetail.Demo.ConsoleCommands
 
         protected void ShowUsage()
         {
-            Console.WriteLine("Usage:");
+            _usageService.DisplayUsage();
         }
     }
 }

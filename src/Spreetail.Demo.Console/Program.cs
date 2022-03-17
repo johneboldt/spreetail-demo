@@ -26,6 +26,7 @@ namespace src
                     services.AddSingleton<IConsoleCommand, AllMembersCommand>();
                     services.AddSingleton<IConsoleCommand, ItemsCommand>();
                     services.AddSingleton<IStartupService, StartupService>();
+                    services.AddSingleton<IUsageService, UsageService>();
                 })
                 .Build();
             var svc = host.Services.GetRequiredService<IStartupService>();
